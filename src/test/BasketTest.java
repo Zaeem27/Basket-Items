@@ -61,6 +61,7 @@ public class BasketTest {
 		assertEquals(basket.removeFruit(f1), f1);
 	}
 	
+	
 	@Test
 	public void testRemove2() {
 		basket.removeFruit(f1);
@@ -68,16 +69,26 @@ public class BasketTest {
 		assertEquals(basket.totalItems(), 1);
 	}
 
+	//Test to check calcPrice method with stream API
 	@Test
 	public void testPriceCalc1() {
 		assertEquals(basket.calcPrice(), 6.0f, 0.0001);
 	}
 	
+	//Test to check calcPrice method with stream API
 	@Test
 	public void testPriceCalc2() {
 		Fruit f4 = new Apple("a2", 10.0f);
 		basket.addFruit(f4);
 		basket.removeFruit(f1);
 		assertEquals(basket.calcPrice(), 14.0f, 0.0001);
+	}
+	
+	//Test to ensure unique ID's generated
+	@Test 
+	public void testRandID() {
+		Fruit f4 = new Apple("a2", 10.0f);
+		Fruit f5 = new Apple("a2", 10.0f);
+		assertNotEquals(f4.getId(), f5.getId());
 	}
 }

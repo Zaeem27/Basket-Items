@@ -18,7 +18,8 @@ public class Basket {
 	public Fruit removeFruit(Fruit fruit) {
 		return this.fruitBasket.remove(this.fruitBasket.indexOf(fruit));
 	}
-
+	
+	//calculates price using stream API
 	public Float calcPrice() {
 		return (float) fruitBasket.stream().mapToDouble(Fruit::getPrice).sum();
 	}
