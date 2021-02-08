@@ -14,7 +14,6 @@ import items.Apple;
 import items.Banana;
 import items.Fruit;
 import items.Orange;
-import junit.framework.Assert;
 
 public class BasketTest {
 	static Basket basket = null;
@@ -39,11 +38,23 @@ public class BasketTest {
 	}
 
 	@Test
-	public void testAdd() {
+	public void testConstruction1() {
+		assertEquals(basket.totalItems(), 3);
+	}
+	
+	@Test
+	public void testAdd1() {
+		Fruit f4 = new Apple("a2", 2.0f);
+		assertEquals(true, basket.addFruit(f4));
+	}
+	
+	@Test
+	public void testAdd2() {
 		Fruit f4 = new Apple("a2", 2.0f);
 		basket.addFruit(f4);
 		assertEquals(4, basket.totalItems());
 	}
+	
 	
 	@Test
 	public void testRemove1() {
@@ -58,7 +69,15 @@ public class BasketTest {
 	}
 
 	@Test
-	public void testPriceCalc() {
+	public void testPriceCalc1() {
 		assertEquals(basket.calcPrice(), 6.0f, 0.0001);
+	}
+	
+	@Test
+	public void testPriceCalc2() {
+		Fruit f4 = new Apple("a2", 10.0f);
+		basket.addFruit(f4);
+		basket.removeFruit(f1);
+		assertEquals(basket.calcPrice(), 14.0f, 0.0001);
 	}
 }
